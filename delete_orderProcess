@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@include file = "DBConn.jsp" %>
+
+<%
+	int orderqty = 0;		//삭제할 주문이 가지고 있는 주문량
+	int currentqty = 0;		//현재 재품의 재고량
+	String productid = request.getParameter("id");
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = "select orderqty from order0518 where productid = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productid);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			orderqty = rs.getInt(1);
+			sql = "delete from order0518 where productid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, productid);
+			pstmt.executeUpdate();
+			
+			sql = "select unitinstock from product0518 where productid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, productid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				currentqty = rs.getInt(1);//현재 재고
+			}
+			sql = "update product0518 set unitinstock = ? where productid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, (currentqty + orderqty));
+			pstmt.setString(2, productid);
+			pstmt.executeUpdate();
+			%>
+			<script>
+				alert("주문 정보 삭제 성공");
+				location.href = "select_order.jsp";
+			</script>
+			<%
+		}
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+%>
