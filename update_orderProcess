@@ -1,0 +1,71 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
+    
+<%@include file = "DBConn.jsp" %>
+
+<%
+	String orderdate = request.getParameter("orderdate");
+	String ordername = request.getParameter("ordername");
+	String productid = request.getParameter("productid");
+	String name = request.getParameter("name");
+	String unitprice = request.getParameter("unitprice");
+	String orderqty = request.getParameter("orderqty");
+	String orderprice = request.getParameter("orderprice");
+	String orderaddress = request.getParameter("orderaddress");
+	int currentOrderQty = 0;		//바꾸기 전 주문수량
+	int orderQty = 0;				//바꾸려는 주문 수량
+	int unitinstock = 0;			//현재 재고
+	
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	String sql = "select orderqty from order0518 where productid = ?";
+	try {
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, productid);
+		rs = pstmt.executeQuery();
+		if(rs.next()) {
+			currentOrderQty = rs.getInt(1);
+			//현재 주문 수량 변수에 저장
+			sql = "update order0518 set orderqty = ?, orderaddress = ? where productid = ?";
+			//주문일자와 주문자 이름은 변경이 불가능
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, orderqty);
+			pstmt.setString(2, orderaddress);
+			pstmt.setString(3, productid);
+			pstmt.executeUpdate();
+			//주문 정보 변경 성공
+			//재고수량 변경해야함
+			orderQty = Integer.parseInt(orderqty);
+			sql = "select unitinstock from product0518 where productid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, productid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				unitinstock = rs.getInt(1);
+				//현재 재고수량 구함
+				sql = "update product0518 set unitinstock = ? where productid = ?";
+				pstmt = conn.prepareStatement(sql);
+				if(orderQty > currentOrderQty) {
+					//바꾸려는 주문량이 기존 주문량보다 많은 경우
+					pstmt.setInt(1, (unitinstock - currentOrderQty));
+				}
+				else if(orderQty < currentOrderQty) {
+					pstmt.setInt(1, (unitinstock + (currentOrderQty - orderQty)));
+				}
+				else {
+					pstmt.setInt(1, (unitinstock));
+				}
+				pstmt.executeUpdate();
+				%>
+				<script>
+					alert("주문 정보 변경 성공");
+					location.href = "select_order.jsp";
+				</script>
+				<%
+			}
+		}
+	}
+	catch (SQLException e) {
+		e.printStackTrace();
+	}
+%>
