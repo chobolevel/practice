@@ -43,5 +43,11 @@
 	}
 	catch (SQLException e) {
 		e.printStackTrace();
+		%>
+		<script>
+			alert("주문 정보 삭제 실패");
+			history.back(-1);
+		</script>
+		<%
 	}
 %>
