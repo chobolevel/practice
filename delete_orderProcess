@@ -47,6 +47,7 @@
 		<script>
 			alert("주문 정보 삭제 실패");
 			history.back(-1);
+			//주문 삭제 실패시 전 화면으로 
 		</script>
 		<%
 	}
