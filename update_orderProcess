@@ -10,6 +10,7 @@
 	String unitprice = request.getParameter("unitprice");
 	int orderqty = Integer.parseInt(request.getParameter("orderqty"));
 	String orderaddress = request.getParameter("orderaddress");
+	//폼으로부터 정보를 가져오는 부분
 	int unitinstock = 0;
 	int c_orderqty = 0;		//변경하기 전 주문수량
 	
@@ -21,15 +22,16 @@
 		pstmt.setString(1, productid);
 		rs = pstmt.executeQuery();
 		if(rs.next()) {
-			unitinstock = rs.getInt(1);
+			unitinstock = rs.getInt(1);		//현재 재고량을 받음
 			sql = "select orderqty from order0518 where productid = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, productid);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				c_orderqty = rs.getInt(1);
+				c_orderqty = rs.getInt(1);		//현재 주문정보에서 주문수량을 받음
 				sql = "update product0518 set unitinstock = ? where productid = ?";
 				pstmt = conn.prepareStatement(sql);
+				int setQty = 0;
 				if(c_orderqty > orderqty) {
 					//변경하려는 주문수량이 기존 주문량보다 작은 경우
 					pstmt.setInt(1, unitinstock + (orderqty - c_orderqty));
@@ -38,12 +40,18 @@
 					//변경하려는 주문수량이 기존 주문량보다 큰 경우
 					pstmt.setInt(1, unitinstock - (c_orderqty - orderqty));
 				}
+				else {
+					pstmt.setInt(1, unitinstock);
+					//만약 같은 경우 그냥 진행함
+				}
 				pstmt.setString(2, productid);
 				pstmt.executeUpdate();
 				//재고량 수정 완료
 				sql = "select productid from order0518 where productid = ?";
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, productid);
 				rs = pstmt.executeQuery();
+				//상품코드를 바꿀 것을 대비해 현재 상품코드를 가져옴
 				if(rs.next()) {
 					String c_productid = rs.getString(1);
 					sql = "update order0518 set productid = ?, unitprice = ?, orderqty = ?, orderaddress = ? where productid = ?";
@@ -69,7 +77,6 @@
 		%>
 		<script>
 			alert("주문 정보 수정 실패");
-			//저장 실패 시 작동
 		</script>
 		<%
 	}
