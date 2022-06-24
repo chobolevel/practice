@@ -7,53 +7,93 @@ body,html {
 	width : 100%;
 	height : 100%;
 }
-section {
-	width : 100%;
-	height : 100%;
+body {
 	background-image : url("poster/cinema.jpg");
 	background-repeat : no-repeat;
 	background-size : cover;
-	position : relative;
 }
 .container {
-	width : 90%;
-	height : 80%;
-	position : absolute;
-	background-color : #eee;
-	left : 5%;
-	top : 10%;
-	border-radius : 20px;
+	width : 1000px;
+	margin : 40px auto;
+	background-color : #fff;
+	border-radius : 10px;
 }
 .poster {
-	width : 40%;
-	height : 90%;
-	position : absolute;
-	left : 5%;
-	top : 5%;
+	width : 430px;
+	float : left;
+	padding : 20px 30px;
 }
 .poster > img {
-	width : 100%;
-	height : 100%;
-	border-radius : 20px;
-}
-.info {
-	width : 40%;
-	height : 10%;
-	position : absolute;
-	top : 5%;
-	right : 5%;
+	border-radius : 10px;
+	width : 430px;
 }
 .description {
-	opacity : 0;
-	visibility : none;
-	position : absolute;
-	width : 40%;
-	height : 90%;
-	left : 5%;
-	top : 5%;
-	background-color : rgba(0, 0, 0, 0.2);
+	display : none;
+	background-color : #rgba(0, 0, 0, 0.5);
 }
-.poster:hover .description{
-	opacity : 1;
-	visibility : visible;
+.poster:hover .description {
+	display : block;
+}
+.info {
+	width : 450px;
+	float : right;
+	margin : 20px 30px;
+	background-color : #ccc;
+}
+.select {
+	width : 410px;
+	margin : 10px 20px;
+	border : 1px solid red;
+}
+.select > p {
+	margin : 10px 0 10px 30px;
+}
+#select {
+	width : 200px;
+	height : 30px;
+	margin : 8px 10px;
+}
+.select > span {
+	margin-left : 20px;
+}
+.seatState {
+	width : 410px;
+	border : 1px solid red;
+	margin : 10px auto;
+	text-align : center;
+	line-height : 10px;
+}
+.seatState > ul > li {
+	list-style-type : none;
+	display : inline-block;
+	padding : 10px 16px;
+}
+.box {
+	display : inline-block;
+	width : 20px;
+	height : 20px;
+	border : 1px solid red;
+	border-radius : 5px 5px 0 0;
+}
+.seat {
+	width : 410px;
+	margin : 10px auto;
+	border : 1px solid red;
+	text-align : center;
+}
+.seat > input[type=checkbox] {
+	width : 30px;
+	height : 30px;
+	margin : 0 2px;
+	border-radius : 10px 10px 0 0;
+}
+.seat > h2 {
+	font-family : "맑은 고딕";
+	margin : 20px 0;
+}
+.footer {
+	clear : both;
+}
+.footer > p {
+	text-align : center;
 }
