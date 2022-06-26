@@ -15,35 +15,54 @@ body {
 .container {
 	width : 1000px;
 	margin : 40px auto;
-	background-color : #fff;
+	background-color : rgb(29, 29, 28);
 	border-radius : 10px;
 }
 .poster {
 	width : 430px;
+	height : 620px;
 	float : left;
-	padding : 20px 30px;
+	margin : 20px 30px;
+	position : relative;
 }
 .poster > img {
 	border-radius : 10px;
 	width : 430px;
+	height : 620px;
 }
 .description {
-	display : none;
-	background-color : #rgba(0, 0, 0, 0.5);
+	opacity : 0;
+	visibility : hidden;
+	width : 430px;
+	height : 30%;
+	text-align : center;
+	background-color : rgba(0, 0, 0, 0.7);
+	position : absolute;
+	bottom : 0;
+	z-index : 1;
+	border-radius : 10px;
+	transition : ease 1s all;
+}
+.description > p {
+	margin-top : 30px;
+	color : #fff;
 }
 .poster:hover .description {
-	display : block;
+	opacity : 1;
+	visibility : visible;
+	transition : ease 1s all;
 }
 .info {
 	width : 450px;
+	height : 620px;
 	float : right;
 	margin : 20px 30px;
-	background-color : #ccc;
+	background-color : rgb(82, 72, 71);
+	border-radius : 10px;
 }
 .select {
 	width : 410px;
 	margin : 10px 20px;
-	border : 1px solid red;
 }
 .select > p {
 	margin : 10px 0 10px 30px;
@@ -52,13 +71,13 @@ body {
 	width : 200px;
 	height : 30px;
 	margin : 8px 10px;
+	border-radius : 15px;
 }
 .select > span {
 	margin-left : 20px;
 }
 .seatState {
 	width : 410px;
-	border : 1px solid red;
 	margin : 10px auto;
 	text-align : center;
 	line-height : 10px;
@@ -66,34 +85,81 @@ body {
 .seatState > ul > li {
 	list-style-type : none;
 	display : inline-block;
-	padding : 10px 16px;
+	padding : 20px 10px;
 }
 .box {
 	display : inline-block;
 	width : 20px;
 	height : 20px;
-	border : 1px solid red;
 	border-radius : 5px 5px 0 0;
+}
+.seatState > ul > li:nth-child(1) > .box {
+	background-color : #777;
+}
+.seatState > ul > li:nth-child(2) > .box {
+	background-color : yellow;
+}
+.seatState > ul > li:nth-child(3) > .box {
+	background-color : red;
 }
 .seat {
 	width : 410px;
+	height : 400px;
+	padding : 20px 0;
 	margin : 10px auto;
-	border : 1px solid red;
 	text-align : center;
 }
-.seat > input[type=checkbox] {
-	width : 30px;
-	height : 30px;
-	margin : 0 2px;
-	border-radius : 10px 10px 0 0;
+.lbl {
+	display : inline-block;
+	width : 20px;
+	height : 20px;
+	margin : 0 8px;
+	background-color : yellow;
+	border-radius : 5px 5px 0 0;
+	transition : ease 0.5s all;
+}
+.lbl > input[type=checkbox] {
+	width : 20px;
+	height : 20px;
+	display : none;
+}
+.lbl:hover {
+	background-color : red;
+	transition : ease 0.5s all;
+}
+.lbl > input[type=checkbox] .lbl {
+	background-color : red;
 }
 .seat > h2 {
 	font-family : "맑은 고딕";
+	margin-top : 10px;
+	margin-bottom : 20px;
+}
+.seat > h3 {
+	font-family : "맑은 고딕";
 	margin : 20px 0;
+}
+.but {
+	width : 410px;
+	margin : 10px auto;
+}
+.but > input[type=submit] {
+	width : 200px;
+	height : 30px;
+	border-radius : 15px;
+	background-color : rgb(237, 49, 36);
+	color : #fff;
+	line-height : 30px;
+}
+.but > input[type=submit]:hover {
+	font-size : 1.1em;
 }
 .footer {
 	clear : both;
 }
 .footer > p {
 	text-align : center;
+	padding-top : 10px;
+	padding-bottom : 20px;
+	color : #eee;
 }
