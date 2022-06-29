@@ -2,6 +2,7 @@
 * {
 	padding : 0;
 	margin : 0;
+	font-family : "맑은 고딕";
 }
 body,html {
 	width : 100%;
@@ -68,7 +69,7 @@ body {
 	margin : 10px 0 10px 30px;
 }
 #select {
-	width : 200px;
+	width : 250px;
 	height : 30px;
 	margin : 8px 10px;
 	border-radius : 15px;
@@ -109,26 +110,10 @@ body {
 	margin : 10px auto;
 	text-align : center;
 }
-.lbl {
-	display : inline-block;
-	width : 20px;
-	height : 20px;
-	margin : 0 8px;
-	background-color : yellow;
-	border-radius : 5px 5px 0 0;
-	transition : ease 0.5s all;
-}
-.lbl > input[type=checkbox] {
-	width : 20px;
-	height : 20px;
-	display : none;
-}
-.lbl:hover {
-	background-color : red;
-	transition : ease 0.5s all;
-}
-.lbl > input[type=checkbox] .lbl {
-	background-color : red;
+.seat > input[type=checkbox] {
+	width : 26px;
+	height : 26px;
+	margin : 1px 5px;
 }
 .seat > h2 {
 	font-family : "맑은 고딕";
@@ -137,13 +122,13 @@ body {
 }
 .seat > h3 {
 	font-family : "맑은 고딕";
-	margin : 20px 0;
+	margin : 10px 0;
 }
 .but {
 	width : 410px;
 	margin : 10px auto;
 }
-.but > input[type=submit] {
+.but > input[type=button] {
 	width : 200px;
 	height : 30px;
 	border-radius : 15px;

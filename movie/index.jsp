@@ -22,6 +22,7 @@
 		</div>
 	</div>
 	<div class = "info">
+		<form name = "form" method = "post" action = "insert_movieProcess.jsp">
 		<div class = "select">
 			<span>영화 선택</span>
 			<select id = "select" name = "movie" onchange = "change()">
@@ -52,7 +53,8 @@
 					<%
 					for(int j = 1; j <= 7; j++) {
 						%>
-						<label class = "lbl"><input name = "seat" type = "checkbox" value = "<%=i +"," + j %>" onchange = "choose()"></label>
+						<input name = "seat" type = "checkbox" value = "<%=i +"-" + j %>" onchange = "choose()">
+						
 						<%
 					}
 					%>
@@ -62,9 +64,10 @@
 			%>
 			<h3>총 금액 : <span id = "s_price"></span>원</h3>
 			<div class = "but">
-				<input type = "submit" value = "예매하기">
+				<input type = "button" value = "예매하기" onclick = "check()">
 			</div>
 		</div>
+		</form>
 	</div>
 	<div class = "footer">
 		<p>영화관 전화번호  : 010-0000-1234 // 영화관 위치 : 경남 창원시 의창구</p>
@@ -109,6 +112,23 @@ function choose() {
 		}
 	}
 	document.querySelector("#s_price").innerHTML = Number(document.getElementById("price").innerHTML) * cnt;
+}
+function check() {
+	var cnt = 0;
+	var arr = document.getElementsByName("seat");
+	for(var i = 0; i < arr.length; i++) {
+		if(arr[i].checked == true) {
+			cnt++;
+			break;
+		}
+	}
+	if(cnt == 0) {
+		alert("최소 1자리 이상 선택해 주세요!");
+		return false;
+	}
+	else {
+		document.form.submit();
+	}
 }
 </script>
 </body>
