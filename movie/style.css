@@ -88,6 +88,29 @@ body {
 	display : inline-block;
 	padding : 20px 10px;
 }
+.lbl {
+	display : inline-block;
+	width : 30px;
+	height : 26px;
+	background-color : #555;
+	border-radius : 5px 5px 0 0;
+	box-sizing : border-box;
+	border : 1px solid #000;
+	margin : 4px 6px; 
+	transition : all 0.3s ease-in-out;
+	font-weight : 500;
+	color : #eee;
+}
+.lbl:hover {
+	background-color : rgb(237, 49, 36);
+}
+.cols {
+	display : inline-block;
+	width : 30px;
+	height : 20px;
+	box-sizing : border-box;
+	margin : 0 9px;
+}
 .box {
 	display : inline-block;
 	width : 20px;
@@ -95,30 +118,42 @@ body {
 	border-radius : 5px 5px 0 0;
 }
 .seatState > ul > li:nth-child(1) > .box {
-	background-color : #777;
+	content : "x";
+	background-color : #000;
 }
 .seatState > ul > li:nth-child(2) > .box {
-	background-color : yellow;
+	background-color : #555;
 }
 .seatState > ul > li:nth-child(3) > .box {
-	background-color : red;
+	background-color : rgb(237, 49, 36);
 }
+
 .seat {
 	width : 410px;
 	height : 400px;
-	padding : 20px 0;
+	padding : 10px 0;
 	margin : 10px auto;
+	text-align : center;
+	perspective : 120px;
+}
+.screen {
+	border-bottom : 30px solid #eee;
+	border-left : 50px solid transparent;
+	border-right : 50px solid transparent;
+	height : 0;
+	width : 100px;
 	text-align : center;
 }
 .seat > input[type=checkbox] {
-	width : 26px;
-	height : 26px;
-	margin : 1px 5px;
+	display : none;
+}
+.seat > input[type=checkbox]:checked + label {
+	background-color : rgb(237, 49, 36);
 }
 .seat > h2 {
 	font-family : "맑은 고딕";
-	margin-top : 10px;
-	margin-bottom : 20px;
+	margin-top : 5px;
+	margin-bottom : 10px;
 }
 .seat > h3 {
 	font-family : "맑은 고딕";
@@ -136,7 +171,7 @@ body {
 	color : #fff;
 	line-height : 30px;
 }
-.but > input[type=submit]:hover {
+.but > input[type=button]:hover {
 	font-size : 1.1em;
 }
 .footer {

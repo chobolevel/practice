@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel = "stylesheet" href = "style.css">
+<style>
+/* 미디어 쿼리 넣기 */
+</style>
 </head>
 <body>
 
@@ -43,8 +46,8 @@
 		</div>
 		<div class = "seat">
 			<h2>좌석을 선택하세요</h2>
-			<p style = "font-size:20px;margin:5px">[screen]</p>
-			<p>&emsp;1&emsp;&emsp;2&emsp;&emsp;3&emsp;&emsp;4&emsp;&emsp;5&emsp;&emsp;6&emsp;&emsp;7</p>
+			<div align = "center"><p style = "font-size:20px;margin:5px" class = "screen">[screen]</p></div>
+			<p align = "center"><span style = "visibility:hidden;">2</span><span class = "cols">1</span><span class = "cols">2</span><span class = "cols">3</span><span class = "cols">4</span><span class = "cols">5</span><span class = "cols">6</span><span class = "cols">7</span></p>
 			<%
 				String[][] arr = new String[7][7];
 				for(int i = 1; i <= 7; i++) {
@@ -53,7 +56,8 @@
 					<%
 					for(int j = 1; j <= 7; j++) {
 						%>
-						<input name = "seat" type = "checkbox" value = "<%=i +"-" + j %>" onchange = "choose()">
+						<input id = "<%=i + "-" + j %>" name = "seat" type = "checkbox" value = "<%=i +"-" + j %>" onchange = "choose()">
+						<label for = "<%=i + "-" + j %>" class = "lbl"><%=i + "-" + j %></label>
 						
 						<%
 					}
