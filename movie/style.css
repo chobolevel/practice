@@ -72,16 +72,18 @@ body {
 	width : 250px;
 	height : 30px;
 	margin : 8px 10px;
-	border-radius : 15px;
+	border-radius : 5px;
 }
 .select > span {
 	margin-left : 20px;
 }
 .seatState {
 	width : 410px;
-	margin : 10px auto;
+	margin : 5px auto;
 	text-align : center;
 	line-height : 10px;
+	border : 1px solid #222;
+	border-radius : 15px;
 }
 .seatState > ul > li {
 	list-style-type : none;
@@ -132,7 +134,7 @@ body {
 	width : 410px;
 	height : 400px;
 	padding : 10px 0;
-	margin : 10px auto;
+	margin : 5px auto;
 	text-align : center;
 	perspective : 120px;
 }
@@ -150,9 +152,11 @@ body {
 .seat > input[type=checkbox]:checked + label {
 	background-color : rgb(237, 49, 36);
 }
+.seat > input[type=checkbox]:disabled + label {
+	background-color : #000!important;
+}
 .seat > h2 {
 	font-family : "맑은 고딕";
-	margin-top : 5px;
 	margin-bottom : 10px;
 }
 .seat > h3 {
