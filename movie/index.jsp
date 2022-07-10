@@ -42,9 +42,11 @@
 
 <section>
 <div id = "main-content">
-	<img src = "images/bg-img01.jpg">
-	<img src = "images/bg-img02.jpg">
 	<img src = "images/bg-img03.jpg">
+	<img src = "images/bg-img04.jpg">
+	<img src = "images/bg-img05.jpg">
+	<img src = "images/bg-img06.jpg">
+	<img src = "images/bg-img07.jpg">
 	<button id = "prev">&lang;</button>
 	<button id = "next">&rang;</button>
 </div>
@@ -64,6 +66,7 @@
 			<li>기생충 배우들의 온라인 팬미팅</li>
 			<li>코로나 19 방역지침 변경</li>
 			<li>토르2의 개봉일정 변경</li>
+			<li>토르2 예매 인증 피규어 증정 이벤트</li>
 		</ul>
 	</div>
 </div>
@@ -71,6 +74,13 @@
 
 <footer>
 <p>경남 창원시 의창구 ***동 // 문의 전화 010-1234-1231</p>
+<p>프로젝트 제작자 : 강인재 // mail : rodaka123@naver.com</p>
+<p>프로젝트 시작 : 2022-07-08</p>
+<div id= "sns">
+	<a href = "#"><img src = "images/sns-1.png"></a>
+	<a href = "#"><img src = "images/sns-2.png"></a>
+	<a href = "#"><img src = "images/sns-3.png"></a>
+</div>
 </footer>
 <script>
 var images = document.querySelectorAll("#main-content > img");
