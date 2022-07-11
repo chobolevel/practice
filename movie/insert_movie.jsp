@@ -18,7 +18,6 @@
 	ArrayList<String> seat = new ArrayList<String> ();
 	String m_code = request.getParameter("movie");
 	if(m_code == null) m_code = "100";
-	System.out.println(m_code);
 	int idx = 0;
 	switch(m_code) {
 	case "100" :

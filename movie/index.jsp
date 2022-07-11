@@ -15,17 +15,34 @@
 	<a href = "index.jsp">창원 시네마</a>
 </div>
 <div id = "top-menu">
-	<ul>
-		<li><a href = "#">로그인</a></li>
-		<li><a href = "#">회원가입</a></li>
-		<li><a href = "#">마이페이지</a></li>
-	</ul>
+	<%
+		String name = (String)session.getAttribute("signedUser");
+		if(name == null) {
+			%>
+			<ul>
+				<li><a href = "login.jsp">로그인</a></li>
+				<li><a href = "insert_member.jsp">회원가입</a></li>
+				<li><a href = "myPage.jsp">마이페이지</a></li>
+			</ul>
+			<%
+		}
+		else {
+			%>
+			<ul>
+				<li><a href = "logoutProcess.jsp" onclick = "if(!confirm('정말 로그아웃 하시겠습니까?')) return false;">로그아웃</a></li>
+				<li><a href = "insert_member.jsp">회원가입</a></li>
+				<li><a href = "myPage.jsp"><%=name %>님</a></li>
+			</ul>
+			<%
+		}
+	%>
+	
 </div>
 </header>
 
 <nav>
 <ul id = "main-menu">
-	<li><a href = "#">예매 하기</a></li>
+	<li><a href = "insert_movie.jsp">예매 하기</a></li>
 	<li><a href = "#">현재상영 영화</a></li>
 	<li><a href = "#">예매 관리</a>
 		<ul id = "sub-menu">
@@ -35,7 +52,7 @@
 		</ul>
 	</li>
 	<li><a href = "#rank">영화 순위 보기</a></li>
-	<li><a href = "#">이벤트</a></li>
+	<li><a href = "#event">이벤트</a></li>
 	<li><a href = "#">문의 하기</a></li>
 </ul>
 </nav>
