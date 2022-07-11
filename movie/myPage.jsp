@@ -5,9 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel = "stylesheet" href = "css/indexstyle.css">
+<link rel = "stylesheet" href = "css/myPage.css">
 </head>
 <body>
+
 <div id = "container">
 
 <header>
@@ -17,6 +18,7 @@
 <div id = "top-menu">
 	<%
 		String name = (String)session.getAttribute("signedName");
+		String id = (String)session.getAttribute("signedId");
 		if(name == null) {
 			%>
 			<ul>
@@ -58,35 +60,20 @@
 </nav>
 
 <section>
-<div id = "main-content">
-	<img src = "images/bg-img03.jpg">
-	<img src = "images/bg-img04.jpg">
-	<img src = "images/bg-img05.jpg">
-	<img src = "images/bg-img06.jpg">
-	<img src = "images/bg-img07.jpg">
-	<button id = "prev">&lang;</button>
-	<button id = "next">&rang;</button>
-</div>
-<div id = "sub-content">
-	<div id = "rank">
-		<h2>현재 영화 순위</h2>
-		<ul>
-			<li><img id = "poster" src = "poster/movie1.jpg"><span>1등(마녀2)</span></li>
-			<li><img id = "poster" src = "poster/movie2.jpg"><span>2등(어벤져스)</span></li>
-			<li><img id = "poster" src = "poster/movie3.jpg"><span>3등(기생충)</span></li>
-		</ul>
+	<div id = "info">
+		<img src = "images/user.jpg">
+			<div id = "id">
+				<p class = "id" ><%=name %>님<span style = "font-size : 20px;">(<%=id %>)</span></p>
+				<p>고객님은 <span style = "text-decoration : underline; font-weight : 500;">브론즈</span> 등급입니다.</p>
+			</div>
+			<div id = "point">
+				<h2>현재 창원 시네마 포인트</h2>
+				<p>총 포인트 : P</p>
+				<p>현재 포인트 : P</p>
+				<p>사용한 포인트 : P</p>
+			</div>
+			<a class = "update" href = "update_myPage.jsp">정보 수정</a>
 	</div>
-	<div id = "event">
-		<h2>현재 진행 이벤트</h2>
-		<ul id = "event-list">
-			<li>마녀2 무대인사</li>
-			<li>기생충 배우들의 온라인 팬미팅</li>
-			<li>코로나 19 방역지침 변경</li>
-			<li>토르2의 개봉일정 변경</li>
-			<li>토르2 예매 인증 피규어 증정 이벤트</li>
-		</ul>
-	</div>
-</div>
 </section>
 
 <footer>
@@ -99,36 +86,8 @@
 	<a href = "#"><img src = "images/sns-3.png"></a>
 </div>
 </footer>
+
 </div>
-
-<script>
-var images = document.querySelectorAll("#main-content > img");
-var prev = document.getElementById("prev");
-var next = document.getElementById("next");
-
-var current = 0;
-
-showImages(current);
-prev.onclick = prevImage;
-next.onclick = nextImage;
-
-function showImages(n) {
-	for(var i = 0; i < images.length; i++) {
-		images[i].style.display = "none";
-	}
-	images[n].style.display = "block";
-}
-function prevImage() {
-	if(current > 0) current -= 1;
-	else current = images.length - 1;
-	showImages(current);
-}
-function nextImage() {
-	if(current < images.length - 1) current += 1;
-	else current = 0;
-	showImages(current);
-}
-</script>
 
 </body>
 </html>

@@ -12,7 +12,7 @@
 <div id = "container">
 		<h1>LOGIN</h1>
 		<div id = "log">
-			<form name = "form" method = "post" action = "login_Process.jsp">
+			<form name = "form" method = "post" action = "login_process.jsp">
 			<div id = "input_id">
 				<input type = "text" name = "id" id = "id">
 				<label for = "id">USER_ID</label>
