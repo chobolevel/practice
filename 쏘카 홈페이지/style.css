@@ -1,0 +1,171 @@
+@charset "UTF-8";
+* {
+    padding : 0;
+    margin : 0;
+}
+a {
+    text-decoration : none;
+}
+div.download {
+    width : 300px;
+    height : 70px;
+    background-color : rgb(0, 184, 255);
+    border-top-left-radius: 20px;
+    position : absolute;
+    bottom : 0px;
+    right : 0px;
+    position : fixed;
+    z-index : 10;
+}
+div.download > img {
+    width : 50px;
+    height : 50px;
+    float : left;
+    margin-left : 10px;
+    margin-top : 10px;
+}
+div.download > a {
+    color : #fff;
+    float : right;
+    font-size : 24px;
+    line-height : 70px;
+    padding-right : 20px;
+}
+ul {
+    list-style-type : none;
+}
+.container {
+    width : 100%;
+    margin : 0px auto;
+}
+header {
+    width : 100%;
+    height : 100vh;
+    background-image : url("../images/main1.jpg");
+    background-repeat : no-repeat;
+    background-size : cover;
+    position : relative;
+    margin-bottom : 20px;
+}
+header > ul {
+    width : 100%;
+}
+header > ul > li:nth-of-type(1) {
+    position : absolute;
+    top : 30px;
+    left : 40px;
+    width : 110px;
+}
+header > ul > li:nth-of-type(2) {
+    position : absolute;
+    top : 20px;
+    right : 30px;
+    color : #fff;
+    font-size : 30px;
+}
+header > p {
+    position : absolute;
+    color : #fff;
+    font-size : 70px;
+    text-align : center;
+    width : 50%;
+    height : 40%;
+    left : 25%;
+    top : 30%;
+    line-height : 120px;
+    display : flex;
+    flex-direction: column;
+}
+section {
+    width : 100%;
+    margin : 20px 0px;
+}
+section article {
+    width : 90%;
+    margin : 10px auto;
+}
+section article h2 {
+    font-size : 40px;
+    padding-top : 50px;
+    padding-bottom : 30px;
+    color : #555;
+}
+section article p {
+    font-size : 18px;
+    color : #aaa;
+    font-weight : 700;
+    padding-bottom : 50px;
+}
+section article img {
+    width : 100%;
+}
+section article:last-child  {
+    width : 100%;
+    height : 300px;
+    text-align : center;
+    margin : 20px 0px;
+}
+section article:last-child p {
+    font-size : 30px;
+    width : 100%;
+    height : 60%;
+    margin-top : 10%;
+    line-height : 60px;
+}
+section article:last-child p span {
+    color : rgb(0, 184, 255);
+    font-weight : bold;
+}
+footer {
+    width : 100%;
+    height : 260px;
+    margin-top : 10px;
+    background-color : rgb(40, 50, 60); 
+    position : relative;
+}
+footer div.sns {
+    width : 100%;
+    text-align : left;
+    padding-top : 30px;
+    padding-bottom : 20px;
+}
+footer div.sns a i {
+    font-size : 30px;
+    margin-left : 30px;
+    color : rgb(100, 111, 124);
+}
+footer ul.contact {
+    width : 100%;
+    padding : 10px 0;
+    display : flex;
+}
+footer ul.contact li {
+    margin-left : 20px;
+}
+footer ul.contact li a {
+    color : #eee;
+    opacity : 0.8;
+}
+footer ul.contact li:nth-of-type(5) a,
+footer ul.contact li:nth-of-type(6) a, 
+footer ul.contact li:nth-of-type(7) a {
+    font-weight : bold;
+    opacity : 1;
+}
+footer div.left {
+    position : absolute;
+    width : 50%;
+    top : 150px;
+    left : 20px;
+    font-size : 15px;
+    color : rgb(100, 111, 124);
+}
+footer div.right {
+    position : absolute;
+    width : 50%;
+    right : 20px;
+    top : 150px;
+    text-align : left;
+    font-size : 15px;
+    color : rgb(100, 111, 124);
+}
