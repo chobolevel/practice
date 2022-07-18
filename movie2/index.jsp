@@ -9,7 +9,9 @@
 <link rel = "stylesheet" href = "css/style.css">
 </head>
 <body>
-
+	<div class = "reserve">
+		<a href = "insert_movie.jsp"><i class="fa-solid fa-ticket"><span>&nbsp;예매하기</span></i></a>
+	</div>
 	<div class = "container">
 		<header>
 			<p>창원 시네마</p>
@@ -42,7 +44,7 @@
 		</header>
 		<nav>
 			<ul class = "main-menu">
-				<li><a href = "#">예매하기</a>
+				<li><a href = "insert_movie.jsp">예매하기</a>
 				<li><a href = "#">영화정보</a>
 				<li><a href = "#">이벤트</a>
 				<li><a href = "#">등급별 혜택</a>

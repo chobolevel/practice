@@ -57,12 +57,12 @@
 				<article class = "time">
 					<h2>시간대</h2>
 					<ul>
-						<li><input type = "radio" name = "time" value = "1000">10:00</li>
-						<li><input type = "radio" name = "time" value = "1230">12:30</li>
-						<li><input type = "radio" name = "time" value = "1540">15:40</li>
-						<li><input type = "radio" name = "time" value = "1850">18:50</li>
-						<li><input type = "radio" name = "time" value = "2125">21:25</li>
-						<li><input type = "radio" name = "time" value = "2350">23:50</li>
+						<li><input type = "radio" name = "time" id = "t1" value = "1000"><label for = "t1">10:00</label></li>
+						<li><input type = "radio" name = "time" id = "t2" value = "1230"><label for = "t2">12:30</label></li>
+						<li><input type = "radio" name = "time" id = "t3" value = "1540"><label for = "t3">15:40</label></li>
+						<li><input type = "radio" name = "time" id = "t4" value = "1850"><label for = "t4">18:50</label></li>
+						<li><input type = "radio" name = "time" id = "t5" value = "2125"><label for = "t5">21:25</label></li>
+						<li><input type = "radio" name = "time" id = "t6" value = "2350"><label for = "t6">23:50</label></li>
 					</ul>
 				</article>
 				<article class = "seat">
