@@ -1,0 +1,30 @@
+영화관2 데이터베이스
+
+<회원 테이블>
+create table m_member(
+   id varchar2(45) primary key,
+   password varchar2(45) not null,
+   name varchar2(13),
+   nickname varchar2(15),
+   birth date,
+   phone varchar2(13),
+   address varchar2(80),
+   grade varchar2(11) default 'bronze',
+   point number(11) default 0);
+
+아이디 비번 이름 별명 생일 전화번호 주소
+
+<영화 테이블>
+create table movie(
+   m_code number(3) primary key,
+   m_name varchar2(45) not null,
+   m_time date,
+   m_price number(6) not null);
+영화 코드, 영화 이름, 영화 시간, 영화 가격
+
+
+<영화 예약 정보 테이블>
+create table m_order(
+   orderno number(11) primary key,
+   
+   
