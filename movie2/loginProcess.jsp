@@ -17,6 +17,7 @@
 			String nickname = rs.getString(3);
 			if(password.equals(temp_pass)) {
 				session.setAttribute("signedId", id);
+				session.setAttribute("signedPass", password);
 				session.setAttribute("signedName", name);
 				session.setAttribute("signedNickname", nickname);
 				response.sendRedirect("index.jsp");

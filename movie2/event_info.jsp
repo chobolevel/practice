@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file = "DBConn.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/4f485c5b0b.js" crossorigin="anonymous"></script>
-<link rel = "stylesheet" href = "css/style.css">
+<link rel = "stylesheet" href = "css/event_info.css">
 </head>
 <body>
 	<div class = "reserve">
@@ -46,40 +47,54 @@
 			<ul class = "main-menu">
 				<li><a href = "insert_movie.jsp">예매하기</a>
 				<li><a href = "movie_info.jsp">영화정보</a>
-				<li><a href = "event_info.jsp">이벤트</a>
+				<li><a href = "#">이벤트</a>
 				<li><a href = "#">등급별 혜택</a>
 				<li><a href = "#">포인트 샵</a>
 			</ul>
 		</nav>
 		<section>
-			<article class = "preview">
-				<video src = "img/preview.mp4" controls autoplay muted loop></video>
-				<p>
-				<span>마녀(魔女) Part2</span><br>
-				대호, 낙원의밤<br>
-				박훈정 감독 작품
-				</p>
-			</article>
-			<article class = "rank">
-				<h2>창원 시네마 영화 랭킹</h2>
-				<ul>
-					<li><img src = "img/movie1.jpg"><span>마녀2</span><a class = "link" href = "movie_info.jsp#101">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=101">예매하기</a><span>1</span></li>
-					<li><img src = "img/movie2.jpg"><span>어벤져스:엔드게임</span><a class = "link" href = "movie_info.jsp#102">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=102">예매하기</a><span>2</span></li>
-					<li><img src = "img/movie3.jpg"><span>기생충</span><a class = "link" href = "movie_info.jsp#103">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=103">예매하기</a><span>3</span></li>
-					<li><img src = "img/movie4.jpg"><span>멍량</span><a class = "link" href = "movie_info.jsp#104">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=104">예매하기</a><span>4</span></li>
-					<li><img src = "img/movie5.jpg"><span>전우치</span><a class = "link" href = "movie_info.jsp#105">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=105">예매하기</a><span>5</span></li>
-				</ul>
-			</article>
-			<article class = "event">
-				<h2>창원 시네마 이벤트</h2>
-				<ul>
-					<li><a href = "#">마녀2 무대인사 일정</a>
-					<li><a href = "#">어벤져스 공식 굿즈 발매일</a>
-					<li><a href = "#">영화관내 여행권을 찾아라!</a>
-					<li><a href = "#">명량 1000만 기념 재방영</a>
-					<li><a href = "#">전우치 무삭제본 방영 일정</a>
-				</ul>
-			</article>
+			<table border = "1" id = "tab1">
+				<tr>
+					<th style = "width : 10%;">NO</th>
+					<th style = "width : 50%;">제 목</th>
+					<th style = "width : 10%;">작성자</th>
+					<th style = "width : 10%;">조회수</th>
+					<th style = "width : 20%;">작성 시간</th>
+				</tr>
+				<%
+				PreparedStatement pstmt = null;
+				ResultSet rs = null;
+				String sql = "select title, id, hit, time, num from event order by num";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					int count = 1;
+					while(rs.next()) {
+						int cnt = count++;
+						String title = rs.getString(1);
+						String m_id = rs.getString(2);
+						String hit = rs.getString(3);
+						String time = rs.getString(4);
+						String num = rs.getString(5);
+						%>
+						<tr>
+							<td><%=cnt %></td>
+							<td><a href = "event_view.jsp?num=<%=num %>"><%=title %></a></td>
+							<td><%=m_id %></td>
+							<td><%=hit %></td>
+							<td><%=time %></td>
+						</tr>
+						<%
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+				%>
+			</table>
+			<div align = "right" class = "move">
+				<a href = "insert_event.jsp"><i class="fa-solid fa-pencil"></i><span>글쓰기</span></a>
+			</div>
 		</section>
 		<footer>
 			<ul class = "contact">
@@ -92,6 +107,5 @@
 			<p>연락처 : 010-9565-7072 이메일 : rodaka123@naver.com</p>
 		</footer>
 	</div>
-
 </body>
 </html>
