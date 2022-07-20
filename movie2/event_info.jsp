@@ -47,13 +47,13 @@
 			<ul class = "main-menu">
 				<li><a href = "insert_movie.jsp">예매하기</a>
 				<li><a href = "movie_info.jsp">영화정보</a>
-				<li><a href = "#">이벤트</a>
-				<li><a href = "#">등급별 혜택</a>
-				<li><a href = "#">포인트 샵</a>
+				<li><a href = "event_info.jsp">이벤트</a>
+				<li><a href = "grade_info.jsp">등급별 혜택</a>
+				<li><a href = "point_info.jsp">포인트 샵</a>
 			</ul>
 		</nav>
 		<section>
-			<table border = "1" id = "tab1">
+			<table id = "tab1">
 				<tr>
 					<th style = "width : 10%;">NO</th>
 					<th style = "width : 50%;">제 목</th>
@@ -64,7 +64,7 @@
 				<%
 				PreparedStatement pstmt = null;
 				ResultSet rs = null;
-				String sql = "select title, id, hit, time, num from event order by num";
+				String sql = "select title, id, hit, time, num from event where indent = 0 order by num";
 				try {
 					pstmt = conn.prepareStatement(sql);
 					rs = pstmt.executeQuery();

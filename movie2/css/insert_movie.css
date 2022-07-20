@@ -77,6 +77,11 @@ ul.main-menu > li {
 ul.main-menu > li > a {
 	font-size : 18px;
 	color : #555;
+	transition : all 0.3s;
+}
+ul.main-menu > li > a:hover {
+	font-size : 19px;
+	font-weight : 700;
 }
 /* 섹션 및 아티클 영역 */
 section {

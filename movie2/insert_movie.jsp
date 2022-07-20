@@ -60,11 +60,11 @@
 		</header>
 		<nav>
 			<ul class = "main-menu">
-				<li><a href = "#">예매하기</a>
-				<li><a href = "#">영화정보</a>
-				<li><a href = "#">이벤트</a>
-				<li><a href = "#">등급별 혜택</a>
-				<li><a href = "#">포인트 샵</a>
+				<li><a href = "insert_movie.jsp">예매하기</a>
+				<li><a href = "movie_info.jsp">영화정보</a>
+				<li><a href = "event_info.jsp">이벤트</a>
+				<li><a href = "grade_info.jsp">등급별 혜택</a>
+				<li><a href = "point_info.jsp">포인트 샵</a>
 			</ul>
 		</nav>
 		<section>
@@ -73,7 +73,7 @@
 					<h2>영화</h2>
 					<ul>
 					<%
-					String sql = "select * from movie";
+					String sql = "select * from movie order by m_code";
 					try {
 						pstmt = conn.prepareStatement(sql);
 						rs = pstmt.executeQuery();

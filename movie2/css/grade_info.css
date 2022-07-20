@@ -104,58 +104,82 @@ ul.main-menu > li > a:hover {
 /* 섹션 및 아티클 영역 */
 section {
 	width : 100%;
-	height : auto;
 	margin-bottom : 10px;
 }
-section article.info {
+section div.warn {
 	width : 100%;
-	position : relative;
-	border-bottom : 1px solid #ccc;
-	transition : all 0.3s;
-}
-section article.info:hover {
-	transform : scale(1.03);
-}
-section article.info img {
-	width : 150px;
-	height : 200px;
-	display : inline-block;
-	margin : 20px;
-	border-radius : 10px;
-}
-section article.info div.desc {
-	width : 500px;
-	display : inline-block;
-	position : absolute;
-	top : 30px;
-	left : 200px;
-}
-section article.info div.desc h2 {
-	margin : 10px;
-}
-section article.info div.desc p {
-	margin-left : 20px;
-	font-size : 14px;
-	color : #555;
-	margin-bottom : 10px;
-}
-section article.info div.desc a {
-	display : inline-block;
-	margin-left : 20px;
-	width : 150px;
-	height : 26px;
-	line-height : 26px;
+	height : 80px;
 	text-align : center;
-	background-color : rgb(237, 49, 36);
-	border-radius : 10px;
-	border : none;
-	color : #fff;
-	margin-bottom : 20px;
+	color : #555;
 	font-size : 14px;
-	transition : all 0.3s;
+	padding : 20px;
 }
-section article.info div.desc a:hover {
-	box-shadow : 0px 0px 3px #222;
+section div.grade {
+	width : 100%;
+	display : flex;
+	flex-direction : row;
+	flex-wrap : wrap;
+}
+section div.grade article {
+	width : 600px;
+	box-sizing : border-box;
+	height : 200px;
+	position : relative;
+}
+section div.grade article:nth-of-type(1) {
+	background-color : rgb(128, 128, 128);
+}
+section div.grade article:nth-of-type(4) {
+	background-color : rgb(128, 128, 128);
+}
+section div.grade article:nth-of-type(5) {
+	background-color : rgb(128, 128, 128);
+}
+section div.grade article i {
+	font-size : 80px;
+	position : absolute;
+	top : 40px;
+	left : 40px;
+	color : rgb(237, 49, 36);
+}
+section div.grade article div.desc {
+	width : 60%;
+	position : absolute;
+	top : 40px;
+	left : 140px;
+}
+section div.grade article div.desc h2 {
+	padding : 10px;
+}
+section div.grade article div.desc p {
+	padding : 10px;
+}
+section div.alert {
+	width : 100%;
+	height : 300px;
+	position : relative;
+}
+section div.alert img {
+	width : 100%;
+	height : 100%;
+}
+section div.alert button {
+	width : 30px;
+	height : 30px;
+	position : absolute;
+	top : 10px;
+	right : 10px;
+	background-color : transparent;
+	color : #fff;
+	border : none;
+	font-weight : 700;
+	font-size : 20px;
+}
+section div.alert button:hover {
+	cursor : pointer;
+}
+.show {
+	display : none;
 }
 /* 푸터 영역 */
 footer {

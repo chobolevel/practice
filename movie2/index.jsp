@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file = "DBConn.jsp" %>
+<%
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+String sql = "";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,8 +53,8 @@
 				<li><a href = "insert_movie.jsp">예매하기</a>
 				<li><a href = "movie_info.jsp">영화정보</a>
 				<li><a href = "event_info.jsp">이벤트</a>
-				<li><a href = "#">등급별 혜택</a>
-				<li><a href = "#">포인트 샵</a>
+				<li><a href = "grade_info.jsp">등급별 혜택</a>
+				<li><a href = "point_info.jsp">포인트 샵</a>
 			</ul>
 		</nav>
 		<section>
@@ -61,7 +67,7 @@
 				</p>
 			</article>
 			<article class = "rank">
-				<h2>창원 시네마 영화 랭킹</h2>
+				<h2><a href = "movie_info.jsp">창원 시네마 영화 랭킹</a></h2>
 				<ul>
 					<li><img src = "img/movie1.jpg"><span>마녀2</span><a class = "link" href = "movie_info.jsp#101">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=101">예매하기</a><span>1</span></li>
 					<li><img src = "img/movie2.jpg"><span>어벤져스:엔드게임</span><a class = "link" href = "movie_info.jsp#102">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=102">예매하기</a><span>2</span></li>
@@ -71,13 +77,27 @@
 				</ul>
 			</article>
 			<article class = "event">
-				<h2>창원 시네마 이벤트</h2>
+				<h2><a href = "event_info.jsp">창원 시네마 이벤트</a></h2>
 				<ul>
-					<li><a href = "#">마녀2 무대인사 일정</a>
-					<li><a href = "#">어벤져스 공식 굿즈 발매일</a>
-					<li><a href = "#">영화관내 여행권을 찾아라!</a>
-					<li><a href = "#">명량 1000만 기념 재방영</a>
-					<li><a href = "#">전우치 무삭제본 방영 일정</a>
+				<%
+				sql = "select * from(select * from event) where rownum <= 5 and indent = 0 order by time desc";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					rs = pstmt.executeQuery();
+					int count = 1;
+					while(rs.next()) {
+						int cnt = count++;
+						String num = rs.getString(1);
+						String title = rs.getString(4);
+						%>
+						<li><%=cnt + ". " %><a href = "event_view.jsp?num=<%=num %>"><%=title %></a></li>
+						<%
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+				%>
 				</ul>
 			</article>
 		</section>

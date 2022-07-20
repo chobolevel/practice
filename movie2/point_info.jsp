@@ -1,13 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "DBConn.jsp" %>
+<%
+String id = (String)session.getAttribute("signedId");
+String name = (String)session.getAttribute("signedName");
+String nickname = (String)session.getAttribute("signedNickname");
+if(id == null) {
+	%>
+	<script>
+		alert("로그인을 먼저 해주세요.");
+		history.back(-1);
+	</script>
+	<%
+}
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+String sql = "";
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/4f485c5b0b.js" crossorigin="anonymous"></script>
-<link rel = "stylesheet" href = "css/movie_info.css">
+<link rel = "stylesheet" href = "css/point_info.css">
 </head>
 <body>
 	<div class = "reserve">
@@ -17,9 +33,6 @@
 		<header>
 			<a href = "index.jsp">창원 시네마</a>
 			<%
-			String id = (String)session.getAttribute("signedId");
-			String name = (String)session.getAttribute("signedName");
-			String nickname = (String)session.getAttribute("signedNickname");
 			if(nickname == null) {
 				%>
 				<ul class = "top-menu">
@@ -53,42 +66,68 @@
 			</ul>
 		</nav>
 		<section>
-		<%
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = "select * from movie order by m_code";
+			<article class = "mine">
+				<i class="fa-solid fa-user"></i>
+				<div class = "desc">
+				<%
+				sql = "select * from m_member where id = ?";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, id);
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						String m_nickname = rs.getString(4);
+						String m_phone = rs.getString(6);
+						String m_address = rs.getString(7);
+						String m_grade = rs.getString(8);
+						int m_point = rs.getInt(9);
+						%>
+							<h2><%=m_nickname %><span><%="(" + id + ")"%></span></h2>
+							<p>등급 : <%=m_grade + "등급"%></p>
+							<p>포인트  : <%=String.format("%,d", m_point ) + "point"%></p>
+							<p>전화번호 : <%=m_phone %></p>
+							<p>주소 : <%=m_address %></p>
+						</div>
+						<%
+					}
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+				}
+				%>
+					
+			</article>
+			<article class = "product">
+			<%
+			sql = "select * from product order by p_code";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				int count = 1;
 				while(rs.next()) {
 					int cnt = count++;
-					String m_code = rs.getString(1);
-					String m_name = rs.getString(2);
-					String m_price = rs.getString(3);
-					String m_director = rs.getString(4);
-					String m_actor = rs.getString(5);
-					String m_category = rs.getString(6);
-					String m_duration = rs.getString(7);
+					String p_code = rs.getString(1);
+					String p_name = rs.getString(2);
+					int p_qty = rs.getInt(3);
+					int p_price = rs.getInt(4);
 					%>
-					<article class = "info" id = "<%=m_code%>">
-						<img class = "poster" src = "img/movie<%=cnt %>.jpg">
-						<div class = "desc">
-							<h2><%=m_name %></h2>
-							<p>감독 : <%=m_director %></p>
-							<p>출연 배우 : <%=m_actor %></p>
-							<p>장르 : <%=m_category %></p>
-							<p>상영시간 : <%=m_duration %>분</p>
-							<a href = "insert_movie.jsp?movie=<%=m_code %>">예매하기</a>
+					<div class = "product<%=cnt %>">
+						<img src = "img/<%=p_code %>.jpg">
+						<div class = "info">
+							<h3>상품명 : <%=p_name %></h3>
+							<p>재고 수량 : <%=p_qty %></p>
+							<p>가격 : <%=String.format("%,d", p_price) %></p>
 						</div>
-					</article>	
+						<button>주문하기</button>
+					</div>
 					<%
 				}
 			}
 			catch (SQLException e) {
 				e.printStackTrace();
 			}
-		%>
+			%>
+			</article>
 		</section>
 		<footer>
 			<ul class = "contact">

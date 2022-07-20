@@ -104,58 +104,104 @@ ul.main-menu > li > a:hover {
 /* 섹션 및 아티클 영역 */
 section {
 	width : 100%;
-	height : auto;
 	margin-bottom : 10px;
 }
-section article.info {
+section article.mine {
 	width : 100%;
+	height : 250px;
 	position : relative;
-	border-bottom : 1px solid #ccc;
-	transition : all 0.3s;
 }
-section article.info:hover {
-	transform : scale(1.03);
+section article.mine i {
+	font-size : 100px;
+	position : absolute;
+	top : 60px;
+	left : 60px;
 }
-section article.info img {
-	width : 150px;
-	height : 200px;
-	display : inline-block;
-	margin : 20px;
-	border-radius : 10px;
-}
-section article.info div.desc {
-	width : 500px;
-	display : inline-block;
+section article.mine div.desc {
+	width : 60%;
 	position : absolute;
 	top : 30px;
 	left : 200px;
 }
-section article.info div.desc h2 {
-	margin : 10px;
+section article.mine div.desc h2 {
+	padding : 20px;
+	padding-bottom : 10px;
+	border-bottom : 1px solid #ccc;
 }
-section article.info div.desc p {
-	margin-left : 20px;
-	font-size : 14px;
+section article.mine div.desc p {
+	padding-left : 30px;
+	padding-top : 10px;
 	color : #555;
-	margin-bottom : 10px;
 }
-section article.info div.desc a {
-	display : inline-block;
-	margin-left : 20px;
-	width : 150px;
-	height : 26px;
-	line-height : 26px;
-	text-align : center;
-	background-color : rgb(237, 49, 36);
-	border-radius : 10px;
-	border : none;
-	color : #fff;
-	margin-bottom : 20px;
-	font-size : 14px;
+section article.product {
+	width : 100%;
+	display : flex;
+	flex-wrap : wrap;
+}
+section article.product div {
+	width : 600px;
+	box-sizing : border-box;
+	height : 250px;
+	position : relative;
+	border : 1px solid #ccc;
 	transition : all 0.3s;
 }
-section article.info div.desc a:hover {
-	box-shadow : 0px 0px 3px #222;
+section article.product div img {
+	position : absolute;
+	width : 180px;
+	height : 180px;
+	top : 30px;
+	left : 30px;
+	background-color : #000;
+	transition : all 0.3s;
+}
+section article.product div div.info {
+	width : 50%;
+	height : 200px;
+	position : absolute;
+	top : 25px;
+	left : 250px;
+	transition : all 0.3s;
+}
+section article.product div div.info h3 {
+	padding : 20px;
+	padding-bottom : 10px;
+	border-bottom : 1px solid #ccc;
+	transition : all 0.3s;
+}
+section article.product div div.info p {
+	padding-left : 30px;
+	padding-top : 30px;
+}
+section article.product div button {
+	width : 100px;
+	height : 30px;
+	position : absolute;
+	top : 110px;
+	left : 250px;
+	background-color : rgb(237, 49, 36);
+	border : none;
+	color : #fff;
+	border-radius : 10px;
+	opacity : 0;
+	visibility : hidden;
+}
+section article.product div:hover {
+	background-color : #000;
+	opacity : 0.9;
+}
+section article.product div:hover img {
+ 	opacity : 0;
+}
+section article.product div:hover div {
+ 	border : 1px solid #000;
+}
+section article.product div:hover div h3 {
+ 	border : 1px solid #000;
+}
+section article.product div:hover button {
+	opacity : 1;
+	visibility : visible;
 }
 /* 푸터 영역 */
 footer {

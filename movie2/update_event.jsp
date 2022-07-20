@@ -1,13 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "DBConn.jsp" %>
+<%
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+String num = request.getParameter("num");
+String title = "";
+String memo = "";
+String sql = "select * from event where num = ?";
+try {
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, num);
+	rs = pstmt.executeQuery();
+	if(rs.next()) {
+		title = rs.getString(4);
+		memo = rs.getString(5);
+	}
+}
+catch (SQLException e) {
+	e.printStackTrace();
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/4f485c5b0b.js" crossorigin="anonymous"></script>
-<link rel = "stylesheet" href = "css/movie_info.css">
+<link rel = "stylesheet" href = "css/insert_event.css">
 </head>
 <body>
 	<div class = "reserve">
@@ -47,48 +67,27 @@
 			<ul class = "main-menu">
 				<li><a href = "insert_movie.jsp">예매하기</a>
 				<li><a href = "movie_info.jsp">영화정보</a>
-				<li><a href = "event_info.jsp">이벤트</a>
-				<li><a href = "grade_info.jsp">등급별 혜택</a>
-				<li><a href = "point_info.jsp">포인트 샵</a>
+				<li><a href = "#">이벤트</a>
+				<li><a href = "#">등급별 혜택</a>
+				<li><a href = "#">포인트 샵</a>
 			</ul>
 		</nav>
 		<section>
-		<%
-			PreparedStatement pstmt = null;
-			ResultSet rs = null;
-			String sql = "select * from movie order by m_code";
-			try {
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				int count = 1;
-				while(rs.next()) {
-					int cnt = count++;
-					String m_code = rs.getString(1);
-					String m_name = rs.getString(2);
-					String m_price = rs.getString(3);
-					String m_director = rs.getString(4);
-					String m_actor = rs.getString(5);
-					String m_category = rs.getString(6);
-					String m_duration = rs.getString(7);
-					%>
-					<article class = "info" id = "<%=m_code%>">
-						<img class = "poster" src = "img/movie<%=cnt %>.jpg">
-						<div class = "desc">
-							<h2><%=m_name %></h2>
-							<p>감독 : <%=m_director %></p>
-							<p>출연 배우 : <%=m_actor %></p>
-							<p>장르 : <%=m_category %></p>
-							<p>상영시간 : <%=m_duration %>분</p>
-							<a href = "insert_movie.jsp?movie=<%=m_code %>">예매하기</a>
-						</div>
-					</article>	
-					<%
-				}
-			}
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-		%>
+			<h2>이벤트 공지 수정</h2>
+			<div class = "write">
+				<form name = "form" method = "post" action = "update_eventProcess.jsp?num=<%=num %>">
+					<div class = "title">
+						<input type = "text" name = "title" value = "<%=title %>">
+					</div>
+					<div class = "memo">
+						<textarea cols = "145" rows = "20" name = "memo"><%=memo %></textarea>
+					</div>
+					<div class = "but">
+						<input type = "button" value = "게시글 수정" onclick = "check()">
+						<input type = "button" value = "수정 취소" onclick = "move()">
+					</div>
+				</form>
+			</div>
 		</section>
 		<footer>
 			<ul class = "contact">
@@ -101,6 +100,23 @@
 			<p>연락처 : 010-9565-7072 이메일 : rodaka123@naver.com</p>
 		</footer>
 	</div>
-
+<script>
+function check() {
+	if(document.form.title.value == "") {
+		alert("제목이 입력되지 않았습니다.");
+		document.form.title.focus();
+	}
+	else if(document.form.memo.value == "") {
+		alert("내용이 입력되지 않았습니다");
+		document.form.memo.focus();
+	}
+	else {
+		document.form.submit();
+	}
+}
+function move() {
+	location.href = "event_info.jsp";
+}
+</script>
 </body>
 </html>
