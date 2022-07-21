@@ -9,7 +9,7 @@ if(id == null) {
 	%>
 	<script>
 		alert("로그인을 먼저 해주세요.");
-		history.back(-1);
+		location.href = "login.jsp";
 	</script>
 	<%
 }
@@ -118,7 +118,7 @@ String sql = "";
 							<p>재고 수량 : <%=p_qty %></p>
 							<p>가격 : <%=String.format("%,d", p_price) %></p>
 						</div>
-						<button>주문하기</button>
+						<a href = "insert_order.jsp?p_code=<%=p_code %>">주문하기</a>
 					</div>
 					<%
 				}

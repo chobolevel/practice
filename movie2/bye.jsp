@@ -12,10 +12,7 @@ String sql = "";
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="https://kit.fontawesome.com/4f485c5b0b.js" crossorigin="anonymous"></script>
-<link rel = "stylesheet" href = "css/style.css">
-<script>
-window.open("pop.jsp", "테넷2 : 상영 예정작을 만나 보세요!", "width = 100, hegiht = 80, left = 10, top = 10");
-</script>
+<link rel = "stylesheet" href = "css/bye.css">
 </head>
 <body>
 	<div class = "reserve">
@@ -61,48 +58,13 @@ window.open("pop.jsp", "테넷2 : 상영 예정작을 만나 보세요!", "width
 			</ul>
 		</nav>
 		<section>
-			<article class = "preview">
-				<video src = "img/preview.mp4" controls autoplay muted loop></video>
-				<p>
-				<span>마녀(魔女) Part2</span><br>
-				대호, 낙원의밤<br>
-				박훈정 감독 작품
-				</p>
-			</article>
-			<article class = "rank">
-				<h2><a href = "movie_info.jsp">창원 시네마 영화 랭킹</a></h2>
-				<ul>
-					<li><img src = "img/101.jpg"><span>마녀2</span><a class = "link" href = "movie_info.jsp#101">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=101">예매하기</a><span>1</span></li>
-					<li><img src = "img/102.jpg"><span>어벤져스:엔드게임</span><a class = "link" href = "movie_info.jsp#102">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=102">예매하기</a><span>2</span></li>
-					<li><img src = "img/103.jpg"><span>기생충</span><a class = "link" href = "movie_info.jsp#103">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=103">예매하기</a><span>3</span></li>
-					<li><img src = "img/104.jpg"><span>멍량</span><a class = "link" href = "movie_info.jsp#104">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=104">예매하기</a><span>4</span></li>
-					<li><img src = "img/105.jpg"><span>전우치</span><a class = "link" href = "movie_info.jsp#105">상세보기</a><a class = "link" href = "insert_movie.jsp?movie=105">예매하기</a><span>5</span></li>
-				</ul>
-			</article>
-			<article class = "event">
-				<h2><a href = "event_info.jsp">창원 시네마 이벤트</a></h2>
-				<ul>
-				<%
-				sql = "select * from(select * from event) where rownum <= 5 and indent = 0 order by time desc";
-				try {
-					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					int count = 1;
-					while(rs.next()) {
-						int cnt = count++;
-						String num = rs.getString(1);
-						String title = rs.getString(4);
-						%>
-						<li><%=cnt + ". " %><a href = "event_view.jsp?num=<%=num %>"><%=title %></a></li>
-						<%
-					}
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-				%>
-				</ul>
-			</article>
+			<div class = "msg">
+				<i class="fa-solid fa-user-check"></i>
+				<h1>회원 탈퇴가 완료되었습니다.</h1>
+				<p>이용해주셔서 감사합니다.</p>
+				<p>다시 이용하실 수 있도록 개선하겠습니다!</p>
+				<a href = "index.jsp">메인으로</a>
+			</div>
 		</section>
 		<footer>
 			<ul class = "contact">
@@ -115,5 +77,6 @@ window.open("pop.jsp", "테넷2 : 상영 예정작을 만나 보세요!", "width
 			<p>연락처 : 010-9565-7072 이메일 : rodaka123@naver.com</p>
 		</footer>
 	</div>
+
 </body>
 </html>

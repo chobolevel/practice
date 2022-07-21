@@ -72,7 +72,7 @@
 					String m_duration = rs.getString(7);
 					%>
 					<article class = "info" id = "<%=m_code%>">
-						<img class = "poster" src = "img/movie<%=cnt %>.jpg">
+						<img class = "poster" src = "img/<%=m_code %>.jpg">
 						<div class = "desc">
 							<h2><%=m_name %></h2>
 							<p>감독 : <%=m_director %></p>

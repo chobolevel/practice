@@ -222,6 +222,9 @@ article.position div.choice {
 	height : 600px;
 	text-align : center;
 }
+.show {
+	display : none;
+}
 article.position div.choice div.screen {
 	width : 70%;
 	height : 30px;
