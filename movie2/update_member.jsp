@@ -54,7 +54,7 @@ catch (SQLException e) {
 					<li><a href = "login.jsp">로그인</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
 					<li><a href = "myPage.jsp">마이페이지</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -64,7 +64,7 @@ catch (SQLException e) {
 					<li><a href = "logoutProcess.jsp">로그아웃</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
 					<li><a href = "myPage.jsp"><%=nickname %>님</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}

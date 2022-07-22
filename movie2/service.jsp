@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "DBConn.jsp" %>
+<%
+PreparedStatement pstmt = null;
+ResultSet rs = null;
+String sql = "";
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>창원 시네마</title>
 <script src="https://kit.fontawesome.com/4f485c5b0b.js" crossorigin="anonymous"></script>
-<link rel = "stylesheet" href = "css/event_info.css">
+<link rel = "stylesheet" href = "css/service.css">
+<script>
+</script>
 </head>
 <body>
 	<div class = "reserve">
@@ -53,47 +60,13 @@
 			</ul>
 		</nav>
 		<section>
-			<table id = "tab1">
-				<tr>
-					<th style = "width : 10%;">NO</th>
-					<th style = "width : 50%;">제 목</th>
-					<th style = "width : 10%;">작성자</th>
-					<th style = "width : 10%;">조회수</th>
-					<th style = "width : 20%;">작성 시간</th>
-				</tr>
-				<%
-				PreparedStatement pstmt = null;
-				ResultSet rs = null;
-				String sql = "select title, id, hit, time, num from event where indent = 0 order by num desc";
-				try {
-					pstmt = conn.prepareStatement(sql);
-					rs = pstmt.executeQuery();
-					int count = 1;
-					while(rs.next()) {
-						int cnt = count++;
-						String title = rs.getString(1);
-						String m_id = rs.getString(2);
-						String hit = rs.getString(3);
-						String time = rs.getString(4);
-						String num = rs.getString(5);
-						%>
-						<tr>
-							<td><%=cnt %></td>
-							<td><a href = "event_view.jsp?num=<%=num %>"><%=title %></a></td>
-							<td><%=m_id %></td>
-							<td><%=hit %></td>
-							<td><%=time %></td>
-						</tr>
-						<%
-					}
-				}
-				catch (SQLException e) {
-					e.printStackTrace();
-				}
-				%>
-			</table>
-			<div align = "right" class = "move">
-				<a href = "insert_event.jsp"><i class="fa-solid fa-pencil"></i><span>글쓰기</span></a>
+			<div class = "msg">
+				<i class="fa-solid fa-circle-exclamation"></i>
+				<h1>고객 불만 사항 접수</h1>
+				<p>전화 번호 : 1588-8282<i style = "color : #555; font-size : 20px; margin-left : 4px;"class="fa-solid fa-headset"></i></p>
+				<p>담당자 번호 : 010-9565-7072<i style = "color : #555; font-size : 20px; margin-left : 4px;"class="fa-solid fa-phone-volume"></i></p>
+				<p>신속하게 처리하고 연락드리겠습니다. 불편을 드려 죄송합니다.</p>
+				<a href = "index.jsp">메인으로</a>
 			</div>
 		</section>
 		<footer>

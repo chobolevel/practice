@@ -39,7 +39,7 @@ String sql = "";
 					<li><a href = "login.jsp">로그인</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
 					<li><a href = "myPage.jsp">마이페이지</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -49,7 +49,7 @@ String sql = "";
 					<li><a href = "logoutProcess.jsp">로그아웃</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
 					<li><a href = "myPage.jsp"><%=nickname %>님</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -67,7 +67,7 @@ String sql = "";
 		</nav>
 		<section>
 			<%
-			sql = "select a.orderno, a.m_code, b.m_name, a.m_time, a.order_seat, a.order_price from m_order a, movie b where a.m_code = b.m_code and id = ?";
+			sql = "select a.orderno, a.m_code, b.m_name, a.m_time, a.order_seat, a.order_price from m_order a, movie b where a.m_code = b.m_code and id = ? order by orderno desc";
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
@@ -160,7 +160,7 @@ String sql = "";
 							<p>보유 포인트 : <%=point %>P</p>
 						</div>
 						<a href = "update_member.jsp?id=<%=id %>">회원 수정</a>
-						<a href = "delete_memberProcess.jsp?id=<%=id %>" onclick = "if(!confirm('정말 예약을 취소하시겠습니까?')) return false;">회원 탈퇴</a>
+						<a href = "delete_memberProcess.jsp?id=<%=id %>" onclick = "if(!confirm('정말 회원 탈퇴 처리를 진행하시겠습니까?')) return false;">회원 탈퇴</a>
 					</article>
 					<%
 				}

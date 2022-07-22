@@ -49,16 +49,16 @@
 			<a href = "index.jsp">창원 시네마</a>
 			<%
 			String id = (String)session.getAttribute("signedId");
-			String password = (String)session.getAttribute("signedPass");
 			String name = (String)session.getAttribute("signedName");
+			String password = (String)session.getAttribute("signedPass");
 			String nickname = (String)session.getAttribute("signedNickname");
 			if(nickname == null) {
 				%>
 				<ul class = "top-menu">
 					<li><a href = "login.jsp">로그인</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
-					<li><a href = "#">마이페이지</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "myPage.jsp">마이페이지</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -67,8 +67,8 @@
 				<ul class = "top-menu">
 					<li><a href = "logoutProcess.jsp">로그아웃</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
-					<li><a href = "#"><%=nickname %>님</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "myPage.jsp"><%=nickname %>님</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -79,9 +79,9 @@
 			<ul class = "main-menu">
 				<li><a href = "insert_movie.jsp">예매하기</a>
 				<li><a href = "movie_info.jsp">영화정보</a>
-				<li><a href = "#">이벤트</a>
-				<li><a href = "#">등급별 혜택</a>
-				<li><a href = "#">포인트 샵</a>
+				<li><a href = "event_info.jsp">이벤트</a>
+				<li><a href = "grade_info.jsp">등급별 혜택</a>
+				<li><a href = "point_info.jsp">포인트 샵</a>
 			</ul>
 		</nav>
 		<section>
@@ -119,7 +119,6 @@
 				</form>
 			</div>
 			<div class = "refels">
-				<h3>댓글 목록</h3>
 				<%
 				sql = "select * from event where ref = '" + num + "' and indent >= 1 order by step asc";
 				try {
@@ -138,6 +137,7 @@
 						String r_step = rs.getString(10);
 						%>
 						<!-- 댓글div -->
+						<h3>댓글 목록</h3>
 						<div class = "comment">
 							<form name = "form2" method = "post" action = "update_refelProcess.jsp?num=<%=r_num%>">
 								<input type = "text" name = "r_id" value = "<%="작성자 : " + r_id %>" readonly><br>
@@ -156,11 +156,6 @@
 								%>
 							</form>
 						</div>
-						<%
-					}
-					if(!rs.next()) {
-						%>
-						<p>댓글이 아직 없습니다.<br> 댓글을 남겨 보세요!</p>
 						<%
 					}
 				}

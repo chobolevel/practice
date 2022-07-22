@@ -30,8 +30,8 @@ String sql = "";
 				<ul class = "top-menu">
 					<li><a href = "login.jsp">로그인</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
-					<li><a href = "#">마이페이지</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "myPage.jsp">마이페이지</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -40,8 +40,8 @@ String sql = "";
 				<ul class = "top-menu">
 					<li><a href = "logoutProcess.jsp">로그아웃</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
-					<li><a href = "#"><%=nickname %>님</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "myPage.jsp"><%=nickname %>님</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -73,7 +73,7 @@ String sql = "";
 					<i class="fa-solid fa-dice-one"></i>
 					<div class = "desc">
 						<h2>ONE 등급</h2>
-						<p>등급 달성 조건 : 영화 1회 관람</p>
+						<p>등급 달성 조건 : 기본 등급</p>
 						<p>등급 달성 시 혜택 : 없음</p>
 					</div>
 				</article>
@@ -90,7 +90,7 @@ String sql = "";
 					<div class = "desc">
 						<h2>THREE 등급</h2>
 						<p>등급 달성 조건 : 영화 5회 관람</p>
-						<p>등급 달성 시 혜택 : 창원 시네마 매정 10%할인</p>
+						<p>등급 달성 시 혜택 : 창원 시네마 매점 10%할인</p>
 					</div>
 				</article>
 				<article class = "grade4">

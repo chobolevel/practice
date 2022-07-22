@@ -10,11 +10,10 @@ String sql = "";
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>창원 시네마</title>
 <script src="https://kit.fontawesome.com/4f485c5b0b.js" crossorigin="anonymous"></script>
 <link rel = "stylesheet" href = "css/style.css">
 <script>
-window.open("pop.jsp", "테넷2 : 상영 예정작을 만나 보세요!", "width = 100, hegiht = 80, left = 10, top = 10");
 </script>
 </head>
 <body>
@@ -34,7 +33,7 @@ window.open("pop.jsp", "테넷2 : 상영 예정작을 만나 보세요!", "width
 					<li><a href = "login.jsp">로그인</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
 					<li><a href = "myPage.jsp">마이페이지</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}
@@ -44,7 +43,7 @@ window.open("pop.jsp", "테넷2 : 상영 예정작을 만나 보세요!", "width
 					<li><a href = "logoutProcess.jsp">로그아웃</a></li>
 					<li><a href = "insert_member.jsp">회원가입</a></li>
 					<li><a href = "myPage.jsp"><%=nickname %>님</a></li>
-					<li><a href = "#">고객센터</a></li>
+					<li><a href = "service.jsp">고객센터</a></li>
 				</ul>
 				<%
 			}

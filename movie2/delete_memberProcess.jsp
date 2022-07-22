@@ -4,7 +4,7 @@
 <%
 	PreparedStatement pstmt = null;
 	String id = request.getParameter("id");
-	String sql = "delete from m_member where id = ?";
+	String sql = "delete from m_member where id = ? and cascade";
 	try {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
