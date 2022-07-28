@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Momentum</title>
+    <title>Document</title>
     <link rel = "stylesheet" href = "css/style.css">
 </head>
 <body>
+    <h2 id = "clock">00:00:00</h2>
     <form id = "login-form" class = "hidden">
-        <input type = "text" placeholder = "What is Your Name?" required maxlength = "15">
+        <input type = "text" placeholder = "What is your name?" required maxlength = "15">
         <button>Log In</button>
     </form>
-    <h2 id = "clock">00:00:00</h2>
     <h1 id = "greeting" class = "hidden"></h1>
+    <form id = "todo-form">
+        <input type = "text" placeholder = "Write a To Do and Press Enter">
+    </form>
+    <ul id = "todo-list">
+        
+    </ul>
     <div id = "quote">
         <span></span>
         <span></span>
@@ -22,5 +28,6 @@
     <script src = "js/clock.js"></script>
     <script src = "js/quotes.js"></script>
     <script src = "js/background.js"></script>
+    <script src = "js/todo.js"></script>
 </body>
 </html>
