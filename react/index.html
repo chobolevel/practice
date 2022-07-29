@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src = "https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src = "https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type = "text/babel">
+        const root = document.querySelector("#root");
+        const Title = () => <h3 id = "title" onMouseEnter = {() => console.log("mouseenter")}>Hello I'm a title</h3>
+        const Btn = () => <button onClick = {() => console.log("I'm Clicked!")} style = {{backgroundColor : "tomato"}}>Click Me</button>
+        // const h3 = React.createElement("h3", {
+        //     onMouseEnter : () => {
+        //         console.log("mouseenter");
+        //     }
+        // }, "Hello My Name is Span");
+        //이렇게 객체 만들 때 추가인수로는 속성을 줄 수 있음
+        //세번째 인수로는 Text작성해줄 수 있음
+        // const btn = React.createElement("button", {
+        //     onClick : () => console.log("I'm CLicked"),
+        //     style : {backgroundColor : "tomato",}
+        // }, "Click Me");
+        const Container = () => <div>
+                <button>Hello Not JSX</button>
+                <Title />
+                <Btn />
+            </div>;
+        ReactDOM.render(<Container />, root);
+        //render는 배치하는 함수
+    </script>
+</body>
+</html>
