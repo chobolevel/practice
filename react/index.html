@@ -13,26 +13,77 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type = "text/babel">
         const root = document.querySelector("#root");
-        const Title = () => <h3 id = "title" onMouseEnter = {() => console.log("mouseenter")}>Hello I'm a title</h3>
-        const Btn = () => <button onClick = {() => console.log("I'm Clicked!")} style = {{backgroundColor : "tomato"}}>Click Me</button>
-        // const h3 = React.createElement("h3", {
-        //     onMouseEnter : () => {
-        //         console.log("mouseenter");
-        //     }
-        // }, "Hello My Name is Span");
-        //이렇게 객체 만들 때 추가인수로는 속성을 줄 수 있음
-        //세번째 인수로는 Text작성해줄 수 있음
-        // const btn = React.createElement("button", {
-        //     onClick : () => console.log("I'm CLicked"),
-        //     style : {backgroundColor : "tomato",}
-        // }, "Click Me");
-        const Container = () => <div>
-                <button>Hello Not JSX</button>
-                <Title />
-                <Btn />
-            </div>;
-        ReactDOM.render(<Container />, root);
-        //render는 배치하는 함수
+
+        function MinutesToHours() {
+            const [amount, setAmount] = React.useState();
+            const [inverted, setInverted] = React.useState(false);
+            const onChange = (e) => {
+                setAmount(e.target.value);
+            }
+            const onClick = () => {
+                setAmount(0);
+            }
+            const flipper = () => {
+                onClick();
+                setInverted(current => !current);
+            }
+            return (
+                <div>
+                    <div>
+                        <label htmlFor = "minutes">Minutes</label>
+                        <input
+                        type = "number"
+                        id = "minutes"
+                        placeholder = "Minutes"
+                        value = {inverted ? amount * 60 : amount}
+                        onChange = {onChange}
+                        disabled = {inverted === true}
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor = "hours">Hours</label>
+                        <input
+                        type = "number"
+                        id = "hours"
+                        placeholder = "Hours"
+                        onChange = {onChange}
+                        value = {inverted ? amount : Math.round(amount / 60)}
+                        disabled = {inverted === false}
+                        />
+                    </div>
+                    <button onClick = {onClick}>RESET</button>
+                    <button onClick = {flipper}>{inverted ? "Turn back" : "Invert"}</button>
+                </div>
+            );
+        };
+
+        function KmToMiles() {
+            return (
+                <h3>KM 2 M</h3>
+            )
+        }
+
+        function App() {
+            const [index, setIndex] = React.useState();
+            const onSelect = (e) => {
+                setIndex(e.target.value);
+            }
+            return (
+                <div>
+                    <h2>Super Converter</h2>
+                    <select value = {index} onChange = {onSelect}>
+                        <option value = "">Select Your Options</option>
+                        <option value = "0">Minutes & Hours</option>
+                        <option value = "1">Km & Miles</option>
+                    </select>
+                    <hr/>
+                    {index === "" ? "Please select your unit!" : null}
+                    {index === "0" ? <MinutesToHours /> : null}
+                    {index === "1" ? <KmToMiles /> : null}
+                </div>
+            );
+        };
+        ReactDOM.render(<App />, root);
     </script>
 </body>
 </html>
