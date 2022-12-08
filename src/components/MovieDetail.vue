@@ -14,7 +14,7 @@
         <fieldset class="movie_detail_genres">
           <legend class="genres_title">Genres</legend>
           <ul>
-            <li v-for="genre in movie.genres">
+            <li v-for="(genre, index) in movie.genres" :key="index">
               {{ genre }}
             </li>
           </ul>
